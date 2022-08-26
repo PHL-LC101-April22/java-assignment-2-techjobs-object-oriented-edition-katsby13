@@ -43,4 +43,29 @@ public class JobTest {
         Job test5 = new Job("Tester", new Employer("Testing Place"), new Location("Place"), new PositionType("Testing"), new CoreCompetency("Good at testing"));
         assertFalse(test4.equals(test5));
     }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine () {
+        Job test6 = new Job("Tester", new Employer("Testing Place"), new Location("Place"), new PositionType("Testing"), new CoreCompetency("Good at testing"));
+        assertEquals(test6.toString().charAt(0), '\n');
+        assertEquals(test6.toString().charAt(test6.toString().length() -1), '\n');
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData () {
+        Job test7 = new Job("Tester", new Employer("Testing Place"), new Location("Place"), new PositionType("Testing"), new CoreCompetency("Good at testing"));
+//        assertTrue(test7.toString().contains("\nID: 4"));
+        assertTrue(test7.toString().contains("\nName: Tester"));
+        assertTrue(test7.toString().contains("\nEmployer: Testing Place"));
+        assertTrue(test7.toString().contains("\nLocation: Place"));
+        assertTrue(test7.toString().contains("\nPosition Type: Testing"));
+        assertTrue(test7.toString().contains("\nCore Competency: Good at testing"));
+        assertEquals(test7.toString(), "\nID: " + test7.getId() + "\nName: Tester\nEmployer: Testing Place\nLocation: Place\nPosition Type: Testing\nCore Competency: Good at testing\n");
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField () {
+        Job test8 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        assertEquals(test8.toString(), "\nID: " + test8.getId() + "\nName: Data not available\nEmployer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n");
+    }
 }
