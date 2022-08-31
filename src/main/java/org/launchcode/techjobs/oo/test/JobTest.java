@@ -54,7 +54,7 @@ public class JobTest {
     @Test
     public void testToStringContainsCorrectLabelsAndData () {
         Job test7 = new Job("Tester", new Employer("Testing Place"), new Location("Place"), new PositionType("Testing"), new CoreCompetency("Good at testing"));
-//        assertTrue(test7.toString().contains("\nID: 4"));
+        assertTrue(test7.toString().contains("\nID: 4"));
         assertTrue(test7.toString().contains("\nName: Tester"));
         assertTrue(test7.toString().contains("\nEmployer: Testing Place"));
         assertTrue(test7.toString().contains("\nLocation: Place"));
